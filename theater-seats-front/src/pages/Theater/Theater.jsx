@@ -1,28 +1,42 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 
 import './Theater.css';
 
 export default function Theater() {
-  let floor = Array(4)
-    .fill(false)
-    .map((row) => new Array(4).fill(false));
+  const [floor, setFloor] = useState(
+    Array(4)
+      .fill()
+      .map((row) => new Array(4).fill(false))
+  );
+
+  let handleSeatClick = (rowIndex, colIndex) => {
+    floor[rowIndex][colIndex] = !floor[rowIndex][colIndex];
+    setFloor(floor);
+  };
 
   return (
     <div className="Floor">
       <table>
-        {floor.map((row, rowIndex) => {
-          return (
-            <tr>
-              {row.map((col, colIndex) => {
-                return (
-                  <td className="Seat">
-                    {rowIndex}, {colIndex}
-                  </td>
-                );
-              })}
-            </tr>
-          );
-        })}
+        <tbody>
+          {floor.map((row, rowIndex) => {
+            return (
+              <tr key={rowIndex}>
+                {row.map((col, colIndex) => {
+                  return (
+                    <td key={colIndex}>
+                      <div
+                        onClick={() => handleSeatClick(rowIndex, colIndex)}
+                        className={`Seat ${
+                          floor[rowIndex][colIndex] === true ? 'Taken' : 'Empty'
+                        }`}
+                      ></div>
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );
