@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Boilerplate.Api.Controllers
 {
-
     [ApiController]
     [Route("api/[controller]")]
     public class HeroController : ControllerBase
@@ -59,7 +58,6 @@ namespace Boilerplate.Api.Controllers
         {
             var newHero = await _heroAppService.CreateHero(dto);
             return CreatedAtAction(nameof(GetHeroById), new { id = newHero.Id }, newHero);
-
         }
 
         /// <summary>

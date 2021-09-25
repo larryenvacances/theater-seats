@@ -12,6 +12,7 @@ namespace Boilerplate.Api.Extensions
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddAutoMapper(typeof(MappingProfile));
+            services.AddAutoMapper(typeof(TheaterProfile));
         }
     }
 }

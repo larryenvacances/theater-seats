@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Boilerplate.Application.DTOs;
@@ -16,7 +15,6 @@ namespace Boilerplate.Application.Services
     public class HeroAppService : IHeroAppService
     {
         private readonly IHeroRepository _heroRepository;
-
         private readonly IMapper _mapper;
 
         public HeroAppService(IMapper mapper, IHeroRepository heroRepository)
@@ -44,12 +42,15 @@ namespace Boilerplate.Application.Services
             var heroes = _heroRepository
                 .GetAll()
                 .WhereIf(!string.IsNullOrEmpty(filter.Name), x => EF.Functions.Like(x.Name, $"%{filter.Name}%"))
-                .WhereIf(!string.IsNullOrEmpty(filter.Nickname), x => EF.Functions.Like(x.Nickname, $"%{filter.Nickname}%"))
+                .WhereIf(!string.IsNullOrEmpty(filter.Nickname),
+                    x => EF.Functions.Like(x.Nickname, $"%{filter.Nickname}%"))
                 .WhereIf(filter.Age != null, x => x.Age == filter.Age)
                 .WhereIf(filter.HeroType != null, x => x.HeroType == filter.HeroType)
                 .WhereIf(!string.IsNullOrEmpty(filter.Team), x => x.Team == filter.Team)
-                .WhereIf(!string.IsNullOrEmpty(filter.Individuality), x => EF.Functions.Like(x.Individuality, $"%{filter.Individuality}%"));
-            return await _mapper.ProjectTo<GetHeroDto>(heroes).ToPaginatedListAsync(filter.CurrentPage, filter.PageSize);
+                .WhereIf(!string.IsNullOrEmpty(filter.Individuality),
+                    x => EF.Functions.Like(x.Individuality, $"%{filter.Individuality}%"));
+            return await _mapper.ProjectTo<GetHeroDto>(heroes)
+                .ToPaginatedListAsync(filter.CurrentPage, filter.PageSize);
         }
 
         public async Task<GetHeroDto> GetHeroById(Guid id)
@@ -82,8 +83,8 @@ namespace Boilerplate.Application.Services
 
         public async Task<bool> DeleteHero(Guid id)
         {
-           await _heroRepository.Delete(id);
-           return await _heroRepository.SaveChangesAsync() > 0;
+            await _heroRepository.Delete(id);
+            return await _heroRepository.SaveChangesAsync() > 0;
         }
 
         #endregion

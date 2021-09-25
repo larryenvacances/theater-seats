@@ -8,14 +8,11 @@ namespace Boilerplate.Api.Extensions
 {
     public static class DatabaseExtension
     {
-        public static void AddApplicationDbContext(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment environment)
+        public static void AddApplicationDbContext(this IServiceCollection services, IConfiguration configuration,
+            IWebHostEnvironment environment)
         {
-
             if (environment?.EnvironmentName == "Testing")
-                services.AddDbContextPool<HeroDbContext>(o =>
-                {
-                    o.UseSqlite("Data Source=test.db");
-                });
+                services.AddDbContextPool<HeroDbContext>(o => { o.UseSqlite("Data Source=test.db"); });
             else
                 services.AddDbContextPool<HeroDbContext>(o =>
                 {

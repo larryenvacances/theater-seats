@@ -4,14 +4,16 @@ using Boilerplate.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Boilerplate.Infrastructure.Migrations
 {
     [DbContext(typeof(HeroDbContext))]
-    partial class HeroDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210925174755_TheaterEntities")]
+    partial class TheaterEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,7 +121,7 @@ namespace Boilerplate.Infrastructure.Migrations
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("MovieEntityId")
+                    b.Property<Guid?>("MovieEntityId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -148,9 +150,7 @@ namespace Boilerplate.Infrastructure.Migrations
                 {
                     b.HasOne("Boilerplate.Domain.Entities.Theater.MovieEntity", null)
                         .WithMany("TimeSlots")
-                        .HasForeignKey("MovieEntityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MovieEntityId");
                 });
 
             modelBuilder.Entity("Boilerplate.Domain.Entities.Theater.MovieEntity", b =>

@@ -32,6 +32,8 @@ namespace Boilerplate.Api
             //DI Services and Repos
             services.AddScoped<IHeroRepository, HeroRepository>();
             services.AddScoped<IHeroAppService, HeroAppService>();
+            
+            services.AddTheaterServices();
 
             // WebApi Configuration
             services.AddControllers().AddJsonOptions(options =>
@@ -51,6 +53,12 @@ namespace Boilerplate.Api
             // GZip compression
             services.AddCompression();
 
+            services.AddCors(o => o.AddPolicy("Policy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +67,7 @@ namespace Boilerplate.Api
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
             app.UseCustomSerilogRequestLogging();
             app.UseRouting();
+            app.UseCors("Policy");
             app.UseApiDoc();
             app.UseEndpoints(endpoints =>
             {
