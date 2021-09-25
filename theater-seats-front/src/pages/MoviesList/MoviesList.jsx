@@ -3,18 +3,16 @@ import axios from 'axios';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import Collapse from '@mui/material/Collapse';
 import useAppContext from '../../hooks/useAppContext';
 
 import './MoviesList.css';
 import { Link } from 'react-router-dom';
-import { convertValueToMeridiem } from '@mui/lab/internal/pickers/time-utils';
 
 export default function MoviesList() {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState('');
+  const [selectedSubIndex, setSelectedSubIndex] = useState(0);
   const [movies, setMovies] = useState([]);
-  const { userName } = useAppContext();
+  const { userName, selectedTimeSlot, setSelectedTimeSlot } = useAppContext();
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
@@ -22,6 +20,7 @@ export default function MoviesList() {
 
   const handleSubListItemClick = (event, index, subIndex) => {
     setSelectedTimeSlot(movies[index].timeSlots[subIndex].id);
+    setSelectedSubIndex(subIndex);
   };
 
   useEffect(() => {
@@ -46,6 +45,7 @@ export default function MoviesList() {
             <List>
               {movies[index].timeSlots.map((timeSlot, timeSlotIndex) => (
                 <ListItemButton
+                  selected={selectedSubIndex === timeSlotIndex}
                   onClick={(event) =>
                     handleSubListItemClick(event, index, timeSlotIndex)
                   }
