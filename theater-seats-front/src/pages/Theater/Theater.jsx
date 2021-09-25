@@ -10,8 +10,8 @@ export default function Theater() {
   );
 
   let handleSeatClick = (rowIndex, colIndex) => {
-    floor[rowIndex][colIndex] = !floor[rowIndex][colIndex];
-    setFloor(floor);
+    floor[rowIndex][colIndex] = true;
+    setFloor([...floor]);
   };
 
   return (
