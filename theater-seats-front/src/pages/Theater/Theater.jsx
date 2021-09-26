@@ -25,6 +25,8 @@ export default function Theater() {
     setFloor([...floor]);
   };
 
+  const submit = () => {};
+
   useEffect(() => {
     selectedTheater.reservations.map(
       (reservation) =>
