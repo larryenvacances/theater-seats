@@ -30,7 +30,8 @@ namespace Boilerplate.Application.Services.Theater
 
         public async Task<IEnumerable<TimeSlotGetDto>> GetAll(Guid movieId)
         {
-            var timeSlots = await _timeSlotsRepository.GetAll().OrderBy(x => x.DateTime).ToListAsync();
+            var timeSlots = await _timeSlotsRepository.GetAll().Include(x => x.Theater).OrderBy(x => x.DisplayHour)
+                .ToListAsync();
 
             return _mapper.Map<IEnumerable<TimeSlotGetDto>>(timeSlots);
         }

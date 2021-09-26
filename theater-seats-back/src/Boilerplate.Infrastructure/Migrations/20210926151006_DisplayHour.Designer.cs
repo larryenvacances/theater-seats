@@ -4,14 +4,16 @@ using Boilerplate.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Boilerplate.Infrastructure.Migrations
 {
     [DbContext(typeof(HeroDbContext))]
-    partial class HeroDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210926151006_DisplayHour")]
+    partial class DisplayHour
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,7 +86,7 @@ namespace Boilerplate.Infrastructure.Migrations
                     b.Property<int>("Row")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("TheaterEntityId")
+                    b.Property<Guid?>("TheaterId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("TimeSlotId")
@@ -92,7 +94,7 @@ namespace Boilerplate.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TheaterEntityId");
+                    b.HasIndex("TheaterId");
 
                     b.HasIndex("TimeSlotId");
 
@@ -128,27 +130,24 @@ namespace Boilerplate.Infrastructure.Migrations
                     b.Property<Guid>("MovieEntityId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("TheaterId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
                     b.HasIndex("MovieEntityId");
-
-                    b.HasIndex("TheaterId");
 
                     b.ToTable("TimeSlots");
                 });
 
             modelBuilder.Entity("Boilerplate.Domain.Entities.Theater.ReservationEntity", b =>
                 {
-                    b.HasOne("Boilerplate.Domain.Entities.Theater.TheaterEntity", null)
+                    b.HasOne("Boilerplate.Domain.Entities.Theater.TheaterEntity", "Theater")
                         .WithMany("Reservations")
-                        .HasForeignKey("TheaterEntityId");
+                        .HasForeignKey("TheaterId");
 
                     b.HasOne("Boilerplate.Domain.Entities.Theater.TimeSlotEntity", "TimeSlot")
                         .WithMany()
                         .HasForeignKey("TimeSlotId");
+
+                    b.Navigation("Theater");
 
                     b.Navigation("TimeSlot");
                 });
@@ -160,12 +159,6 @@ namespace Boilerplate.Infrastructure.Migrations
                         .HasForeignKey("MovieEntityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Boilerplate.Domain.Entities.Theater.TheaterEntity", "Theater")
-                        .WithMany()
-                        .HasForeignKey("TheaterId");
-
-                    b.Navigation("Theater");
                 });
 
             modelBuilder.Entity("Boilerplate.Domain.Entities.Theater.MovieEntity", b =>

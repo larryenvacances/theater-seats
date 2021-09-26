@@ -28,9 +28,13 @@ namespace Boilerplate.Application.Services.Theater
             GC.SuppressFinalize(this);
         }
 
-        public async Task<IEnumerable<MovieGetDto>> GetAll()
+        public async Task<IEnumerable<MovieGetDto>> GetAll(DateTime dateTime)
         {
-            var movies = await _moviesRepository.GetAll().Include(x => x.TimeSlots.OrderBy(x => x.DateTime))
+            var movies = await _moviesRepository
+                .GetAll()
+                .Where(x => x.DisplayStart <= dateTime && dateTime <= x.DisplayEnd)
+                .Include(x => x.TimeSlots.OrderBy(y => y.DisplayHour))
+                .ThenInclude(x => x.Theater)
                 .ToListAsync();
 
             return _mapper.Map<IEnumerable<MovieGetDto>>(movies);

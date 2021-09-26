@@ -8,6 +8,6 @@ namespace Boilerplate.Application.DTOs.Theater
         [Required]
         public Guid MovieEntityId { get; set; }
         
-        public DateTime DateTime { get; set; }
+        public int DisplayHour { get; set; }
     }
 }

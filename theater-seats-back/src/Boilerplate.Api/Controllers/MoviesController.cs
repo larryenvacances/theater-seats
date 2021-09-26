@@ -26,9 +26,9 @@ namespace Boilerplate.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<List<MovieGetDto>>> Get()
+        public async Task<ActionResult<List<MovieGetDto>>> Get([FromQuery] DateTime dateTime)
         {
-            return Ok(await _moviesAppService.GetAll());
+            return Ok(await _moviesAppService.GetAll(dateTime));
         }
 
         /// <summary>
@@ -37,10 +37,10 @@ namespace Boilerplate.Api.Controllers
         /// <param name="movieInsertDto"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult<List<TimeSlotGetDto>>> Post([FromBody] MovieInsertDto movieInsertDto)
+        public async Task<ActionResult<MovieGetDto>> Post([FromBody] MovieInsertDto movieInsertDto)
         {
-            var newTimeSlot = await _moviesAppService.Create(movieInsertDto);
-            return CreatedAtAction(nameof(GetById), new { id = newTimeSlot.Id }, newTimeSlot);
+            var newMovie = await _moviesAppService.Create(movieInsertDto);
+            return CreatedAtAction(nameof(GetById), new { id = newMovie.Id }, newMovie);
         }
 
 
@@ -52,12 +52,12 @@ namespace Boilerplate.Api.Controllers
         [HttpGet]
         [Route("{id:guid}")]
         [ProducesResponseType(404)]
-        [ProducesResponseType(typeof(GetHeroDto), 200)]
-        public async Task<ActionResult<GetHeroDto>> GetById(Guid id)
+        [ProducesResponseType(typeof(MovieGetDto), 200)]
+        public async Task<ActionResult<MovieGetDto>> GetById([FromQuery] Guid id)
         {
-            var timeSlot = await _moviesAppService.GetById(id);
-            if (timeSlot == null) return NotFound();
-            return Ok(timeSlot);
+            var movie = await _moviesAppService.GetById(id);
+            if (movie == null) return NotFound();
+            return Ok(movie);
         }
     }
 }

@@ -8,6 +8,7 @@ export default function AppContextProvider(props) {
   const [userName, setUserName] = useState('');
   const [date, setDate] = useState(new Date());
   const [selectedTimeSlot, setSelectedTimeSlot] = useState('');
+  const [selectedTheater, setSelectedTheater] = useState({});
 
   const value = {
     userName,
@@ -16,6 +17,8 @@ export default function AppContextProvider(props) {
     setDate,
     selectedTimeSlot,
     setSelectedTimeSlot,
+    selectedTheater,
+    setSelectedTheater,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

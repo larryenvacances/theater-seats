@@ -1,4 +1,5 @@
 ﻿using System;
+using Boilerplate.Domain.Entities.Theater;
 
 namespace Boilerplate.Application.DTOs.Theater
 {
@@ -6,6 +7,8 @@ namespace Boilerplate.Application.DTOs.Theater
     {
         public Guid Id { get; set; }
         
-        public DateTime DateTime { get; set; }
+        public int DisplayHour { get; set; }
+        
+        public TheaterGetDto Theater { get; set; }
     }
 }

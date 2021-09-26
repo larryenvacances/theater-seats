@@ -6,8 +6,6 @@ namespace Boilerplate.Domain.Entities.Theater
     {
         public TimeSlotEntity TimeSlot { get; set; }
         
-        public TheaterEntity Theater { get; set; }
-        
         public string Name { get; set; }
         
         public int Row { get; set; }

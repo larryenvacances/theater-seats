@@ -14,6 +14,8 @@ namespace Boilerplate.Application.MappingProfiles
             
             CreateMap<MovieEntity, MovieGetDto>().ReverseMap();
             CreateMap<MovieInsertDto, MovieEntity>();
+            
+            CreateMap<TheaterEntity, TheaterGetDto>().ReverseMap();
         }
     }
 }

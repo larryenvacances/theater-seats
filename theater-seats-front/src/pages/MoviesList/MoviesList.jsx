@@ -12,7 +12,8 @@ export default function MoviesList() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedSubIndex, setSelectedSubIndex] = useState(0);
   const [movies, setMovies] = useState([]);
-  const { userName, selectedTimeSlot, setSelectedTimeSlot } = useAppContext();
+  const { userName, setSelectedTimeSlot, setSelectedTheater, date } =
+    useAppContext();
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
@@ -21,10 +22,15 @@ export default function MoviesList() {
   const handleSubListItemClick = (event, index, subIndex) => {
     setSelectedTimeSlot(movies[index].timeSlots[subIndex].id);
     setSelectedSubIndex(subIndex);
+    setSelectedTheater(movies[index].timeSlots[subIndex].theater);
   };
 
   useEffect(() => {
-    axios.get('https://localhost:5001/api/Movies').then((res) => {
+    const params = {
+      dateTime: date,
+    };
+
+    axios.get('https://localhost:5001/api/Movies', { params }).then((res) => {
       setMovies(res.data);
       console.log(res.data);
     });
@@ -33,7 +39,6 @@ export default function MoviesList() {
   return (
     <div className="MoviesList">
       <h1>{userName}</h1>
-      <h1>{selectedTimeSlot}</h1>
       <List>
         {movies.map((value, index) => (
           <ListItemButton
@@ -51,7 +56,7 @@ export default function MoviesList() {
                   }
                   key={timeSlotIndex}
                 >
-                  <ListItemText primary={timeSlot.dateTime} />
+                  <ListItemText primary={timeSlot.displayHour} />
                 </ListItemButton>
               ))}
             </List>
