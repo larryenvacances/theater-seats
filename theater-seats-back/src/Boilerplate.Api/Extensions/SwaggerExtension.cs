@@ -32,7 +32,6 @@ namespace Boilerplate.Api.Extensions
                 var xmlfile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlfile);
                 c.IncludeXmlComments(xmlPath);
-
             });
             return services;
         }
@@ -40,12 +39,12 @@ namespace Boilerplate.Api.Extensions
         public static IApplicationBuilder UseApiDoc(this IApplicationBuilder app)
         {
             app.UseSwagger()
-               .UseSwaggerUI(c =>
-               {
-                   c.RoutePrefix = "api-docs";
-                   c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-                   c.DocExpansion(DocExpansion.List);
-               });
+                .UseSwaggerUI(c =>
+                {
+                    c.RoutePrefix = "api-docs";
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                    c.DocExpansion(DocExpansion.List);
+                });
             return app;
         }
     }

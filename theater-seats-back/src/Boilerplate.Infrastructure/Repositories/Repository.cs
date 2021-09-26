@@ -28,8 +28,8 @@ namespace Boilerplate.Infrastructure.Repositories
         public virtual async Task<TEntity> GetById(Guid id)
         {
             return await DbSet
-                        .AsNoTracking()
-                        .FirstOrDefaultAsync(e => e.Id == id);
+                .AsNoTracking()
+                .FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public virtual TEntity Create(TEntity entity)

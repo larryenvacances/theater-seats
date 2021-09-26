@@ -17,7 +17,7 @@ namespace Boilerplate.Application.Services.Theater
             _mapper = mapper;
             _theatersRepository = theatersRepository;
         }
-        
+
         public async Task<TheaterGetDto> GetById(Guid theaterId)
         {
             return _mapper.Map<TheaterGetDto>(await _theatersRepository.GetById(theaterId));

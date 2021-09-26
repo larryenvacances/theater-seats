@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Boilerplate.Domain.Entities;
 using Boilerplate.Domain.Entities.Theater;
 using Boilerplate.Infrastructure.Context;
-using Boilerplate.Infrastructure.Repositories;
 using Boilerplate.Infrastructure.Repositories.Theater;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
@@ -28,9 +26,10 @@ namespace Boilerplate.Api.UnitTests
             var id = Guid.NewGuid();
             await using (var context = CreateDbContext("GetMovies"))
             {
-                context.Set<MovieEntity>().Add(new MovieEntity { Id = id });
+                context.Set<MovieEntity>().Add(new MovieEntity {Id = id});
                 await context.SaveChangesAsync();
             }
+
             MovieEntity movie = null;
 
             // Act
@@ -39,7 +38,7 @@ namespace Boilerplate.Api.UnitTests
                 var repository = new MoviesRepository(context);
                 movie = await repository.GetById(id);
             }
-            
+
             // Assert
             movie.Should().NotBeNull();
             movie.Id.Should().Be(id);
@@ -52,9 +51,10 @@ namespace Boilerplate.Api.UnitTests
             var id = Guid.NewGuid();
             await using (var context = CreateDbContext("GetMovies_Null"))
             {
-                context.Set<MovieEntity>().Add(new MovieEntity { Id = id });
+                context.Set<MovieEntity>().Add(new MovieEntity {Id = id});
                 await context.SaveChangesAsync();
             }
+
             MovieEntity hero;
 
             // Act
@@ -63,6 +63,7 @@ namespace Boilerplate.Api.UnitTests
                 var repository = new MoviesRepository(context);
                 hero = await repository.GetById(Guid.NewGuid());
             }
+
             // Assert
             hero.Should().BeNull();
         }

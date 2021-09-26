@@ -5,6 +5,5 @@ namespace Boilerplate.Domain.Repositories.Theater
 {
     public interface IMoviesRepository : IRepository<MovieEntity>
     {
-        
     }
 }

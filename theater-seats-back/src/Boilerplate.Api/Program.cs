@@ -27,7 +27,7 @@ namespace Boilerplate.Api
 
                 await host.RunAsync();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Log.Logger.Fatal(ex, "Application startup failed.");
                 throw;
@@ -36,7 +36,6 @@ namespace Boilerplate.Api
             {
                 Log.CloseAndFlush();
             }
-            
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args)

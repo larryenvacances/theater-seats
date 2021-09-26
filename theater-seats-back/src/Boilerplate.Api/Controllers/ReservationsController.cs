@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Boilerplate.Application.DTOs.Theater;
@@ -22,15 +21,16 @@ namespace Boilerplate.Api.Controllers
         }
 
         /// <summary>
-        /// Creates a reservation
+        ///     Creates a reservation
         /// </summary>
         /// <param name="reservationInsertDto"></param>
         /// <returns></returns>
         [HttpPut]
-        public async Task<ActionResult<List<ReservationGetDto>>> Put([FromBody] List<ReservationInsertDto> reservationInsertDto)
+        public async Task<ActionResult<List<ReservationGetDto>>> Put(
+            [FromBody] List<ReservationInsertDto> reservationInsertDto)
         {
             var newReservations = await _reservationsAppService.Create(reservationInsertDto);
-            return CreatedAtAction(nameof(Put), new { ids = newReservations.Select(x => x.Id) }, newReservations);
+            return CreatedAtAction(nameof(Put), new {ids = newReservations.Select(x => x.Id)}, newReservations);
         }
     }
 }

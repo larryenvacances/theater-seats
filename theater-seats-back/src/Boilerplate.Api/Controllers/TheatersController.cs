@@ -13,13 +13,14 @@ namespace Boilerplate.Api.Controllers
     public class TheatersController : ControllerBase
     {
         private readonly ITheatersAppService _theatersAppService;
+
         public TheatersController(ITheatersAppService theatersAppService)
         {
             _theatersAppService = theatersAppService;
         }
 
         /// <summary>
-        /// Get one theater by id from the database
+        ///     Get one theater by id from the database
         /// </summary>
         /// <param name="theaterId">The theater's id</param>
         /// <returns>a theater</returns>

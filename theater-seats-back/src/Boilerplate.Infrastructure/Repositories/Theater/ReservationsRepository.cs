@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using Boilerplate.Domain.Entities.Theater;
 using Boilerplate.Domain.Repositories.Theater;
 using Boilerplate.Infrastructure.Context;

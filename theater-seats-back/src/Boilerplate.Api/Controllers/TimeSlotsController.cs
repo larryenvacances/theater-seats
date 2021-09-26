@@ -14,14 +14,14 @@ namespace Boilerplate.Api.Controllers
     public class TimeSlotsController : ControllerBase
     {
         private readonly ITimeSlotsAppService _timeSlotsAppService;
-        
+
         public TimeSlotsController(ITimeSlotsAppService timeSlotsAppService)
         {
             _timeSlotsAppService = timeSlotsAppService;
         }
 
         /// <summary>
-        /// Returns all timeslots for a movie
+        ///     Returns all timeslots for a movie
         /// </summary>
         /// <param name="movieId"></param>
         /// <returns></returns>
@@ -32,7 +32,7 @@ namespace Boilerplate.Api.Controllers
         }
 
         /// <summary>
-        /// Creates a timeslot for a movie
+        ///     Creates a timeslot for a movie
         /// </summary>
         /// <param name="timeSlotInsertDto"></param>
         /// <returns></returns>
@@ -40,12 +40,12 @@ namespace Boilerplate.Api.Controllers
         public async Task<ActionResult<List<TimeSlotGetDto>>> Post([FromBody] TimeSlotInsertDto timeSlotInsertDto)
         {
             var newTimeSlot = await _timeSlotsAppService.Create(timeSlotInsertDto);
-            return CreatedAtAction(nameof(GetById), new { id = newTimeSlot.Id }, newTimeSlot);
+            return CreatedAtAction(nameof(GetById), new {id = newTimeSlot.Id}, newTimeSlot);
         }
 
 
         /// <summary>
-        /// Get one timeSlot by id from the database
+        ///     Get one timeSlot by id from the database
         /// </summary>
         /// <param name="id">The timeslot's id</param>
         /// <returns></returns>

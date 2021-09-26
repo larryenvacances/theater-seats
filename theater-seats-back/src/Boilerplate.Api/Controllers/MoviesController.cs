@@ -14,14 +14,14 @@ namespace Boilerplate.Api.Controllers
     public class MoviesController : ControllerBase
     {
         private readonly IMoviesAppService _moviesAppService;
-        
+
         public MoviesController(IMoviesAppService moviesAppService)
         {
             _moviesAppService = moviesAppService;
         }
 
         /// <summary>
-        /// Returns all movies
+        ///     Returns all movies
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -31,7 +31,7 @@ namespace Boilerplate.Api.Controllers
         }
 
         /// <summary>
-        /// Creates a movie
+        ///     Creates a movie
         /// </summary>
         /// <param name="movieInsertDto"></param>
         /// <returns></returns>
@@ -39,12 +39,12 @@ namespace Boilerplate.Api.Controllers
         public async Task<ActionResult<MovieGetDto>> Post([FromBody] MovieInsertDto movieInsertDto)
         {
             var newMovie = await _moviesAppService.Create(movieInsertDto);
-            return CreatedAtAction(nameof(GetById), new { id = newMovie.Id }, newMovie);
+            return CreatedAtAction(nameof(GetById), new {id = newMovie.Id}, newMovie);
         }
 
 
         /// <summary>
-        /// Get one movie by id from the database
+        ///     Get one movie by id from the database
         /// </summary>
         /// <param name="id">The movie's id</param>
         /// <returns></returns>

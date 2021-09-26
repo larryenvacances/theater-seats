@@ -5,12 +5,11 @@ namespace Boilerplate.Api.IntegrationTests
 {
     public class IntegrationTest
     {
+        protected static readonly WebApplicationFactory<Startup> Factory =
+            new WebApplicationFactory<Startup>().BuildApplicationFactory();
+
         protected IntegrationTest()
         {
-
         }
-
-        protected static readonly WebApplicationFactory<Startup> Factory = new WebApplicationFactory<Startup>().BuildApplicationFactory();
-
     }
 }

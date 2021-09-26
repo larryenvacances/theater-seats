@@ -10,10 +10,7 @@ namespace Boilerplate.Api.Extensions
         public static IServiceCollection AddCompression(this IServiceCollection services)
         {
             services.Configure<GzipCompressionProviderOptions>(
-            options =>
-            {
-                options.Level = CompressionLevel.Optimal;
-            });
+                options => { options.Level = CompressionLevel.Optimal; });
 
             services.AddResponseCompression(options =>
             {

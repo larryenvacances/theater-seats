@@ -1,6 +1,4 @@
-﻿using System;
-using Boilerplate.Domain.Entities;
-using Boilerplate.Domain.Entities.Theater;
+﻿using Boilerplate.Domain.Entities.Theater;
 using Microsoft.EntityFrameworkCore;
 
 namespace Boilerplate.Infrastructure.Context

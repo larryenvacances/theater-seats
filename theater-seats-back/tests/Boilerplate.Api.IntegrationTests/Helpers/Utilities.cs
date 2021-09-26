@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Boilerplate.Domain.Entities;
 using Boilerplate.Domain.Entities.Theater;
 using Boilerplate.Infrastructure.Context;
 using Microsoft.AspNetCore.Hosting;
@@ -28,13 +27,26 @@ namespace Boilerplate.Api.IntegrationTests.Helpers
         {
             return new List<MovieEntity>
             {
-                new() { Id = Guid.NewGuid(), Title = "Silence of the Lambdas", DisplayStart = DateTime.UtcNow.AddDays(-1), DisplayEnd = DateTime.UtcNow.AddDays(1)},
-                new() { Id = Guid.NewGuid(), Title = "Get Out", DisplayStart = DateTime.UtcNow.AddDays(-1), DisplayEnd = DateTime.UtcNow.AddDays(1)},
-                new() { Id = Guid.NewGuid(), Title = "Something Something Test", DisplayStart = DateTime.UtcNow.AddDays(-1), DisplayEnd = DateTime.UtcNow.AddDays(1)},
+                new()
+                {
+                    Id = Guid.NewGuid(), Title = "Silence of the Lambdas", DisplayStart = DateTime.UtcNow.AddDays(-1),
+                    DisplayEnd = DateTime.UtcNow.AddDays(1)
+                },
+                new()
+                {
+                    Id = Guid.NewGuid(), Title = "Get Out", DisplayStart = DateTime.UtcNow.AddDays(-1),
+                    DisplayEnd = DateTime.UtcNow.AddDays(1)
+                },
+                new()
+                {
+                    Id = Guid.NewGuid(), Title = "Something Something Test", DisplayStart = DateTime.UtcNow.AddDays(-1),
+                    DisplayEnd = DateTime.UtcNow.AddDays(1)
+                }
             };
         }
 
-        public static WebApplicationFactory<Startup> BuildApplicationFactory(this WebApplicationFactory<Startup> factory)
+        public static WebApplicationFactory<Startup> BuildApplicationFactory(
+            this WebApplicationFactory<Startup> factory)
         {
             return factory.WithWebHostBuilder(builder =>
             {

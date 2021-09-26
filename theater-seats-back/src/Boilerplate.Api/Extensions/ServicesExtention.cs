@@ -1,5 +1,4 @@
 ﻿using System;
-using AutoMapper;
 using Boilerplate.Application.Interfaces.Theater;
 using Boilerplate.Application.Services.Theater;
 using Boilerplate.Domain.Repositories.Theater;
@@ -16,7 +15,7 @@ namespace Boilerplate.Api.Extensions
 
             services.AddScoped<ITimeSlotsRepository, TimeSlotsRepository>();
             services.AddScoped<ITimeSlotsAppService, TimeSlotsAppService>();
-            
+
             services.AddScoped<IMoviesRepository, MoviesRepository>();
             services.AddScoped<IMoviesAppService, MoviesAppService>();
 

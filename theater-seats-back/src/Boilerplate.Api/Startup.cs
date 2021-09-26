@@ -1,9 +1,5 @@
 using System.Text.Json.Serialization;
 using Boilerplate.Api.Extensions;
-using Boilerplate.Application.Interfaces;
-using Boilerplate.Application.Services;
-using Boilerplate.Domain.Repositories;
-using Boilerplate.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -28,7 +24,7 @@ namespace Boilerplate.Api
         {
             //Extension method for less clutter in startup
             services.AddApplicationDbContext(Configuration, Environment);
-            
+
             services.AddTheaterServices();
 
             // WebApi Configuration
@@ -65,10 +61,7 @@ namespace Boilerplate.Api
             app.UseRouting();
             app.UseCors("Policy");
             app.UseApiDoc();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
             //added request logging
 
