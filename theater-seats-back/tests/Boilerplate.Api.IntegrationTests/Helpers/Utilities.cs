@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Boilerplate.Domain.Entities;
 using Boilerplate.Domain.Entities.Enums;
+using Boilerplate.Domain.Entities.Theater;
 using Boilerplate.Infrastructure.Context;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -12,25 +13,25 @@ namespace Boilerplate.Api.IntegrationTests.Helpers
 {
     public static class Utilities
     {
-        public static void InitializeDbForTests(AppDbContext db)
+        private static void InitializeDbForTests(AppDbContext db)
         {
-            db.Heroes.AddRange(GetSeedingHeroes());
+            db.Movies.AddRange(GetSeedingMovies());
             db.SaveChanges();
         }
 
-        public static void ReinitializeDbForTests(AppDbContext db)
+        private static void ReinitializeDbForTests(AppDbContext db)
         {
-            db.Heroes.RemoveRange(db.Heroes);
+            db.Movies.RemoveRange(db.Movies);
             InitializeDbForTests(db);
         }
 
-        public static List<Hero> GetSeedingHeroes()
+        private static IEnumerable<MovieEntity> GetSeedingMovies()
         {
-            return new()
+            return new List<MovieEntity>
             {
-                new(){ Id = new Guid("824a7a65-b769-4b70-bccb-91f880b6ddf1"), Name = "Corban Best", HeroType = HeroType.ProHero },
-                new() { Id = new Guid("b426070e-ccb3-42e6-8fb4-ef6aa5a62cc4"), Name = "Priya Hull", HeroType = HeroType.Student },
-                new() { Id = new Guid("634769f7-a7b8-4146-9cb2-ff2dd90e886b"), Name = "Harrison Vu", HeroType = HeroType.Teacher }
+                new() { Id = Guid.NewGuid(), Title = "Silence of the Lambdas", DisplayStart = DateTime.UtcNow.AddDays(-1), DisplayEnd = DateTime.UtcNow.AddDays(1)},
+                new() { Id = Guid.NewGuid(), Title = "Get Out", DisplayStart = DateTime.UtcNow.AddDays(-1), DisplayEnd = DateTime.UtcNow.AddDays(1)},
+                new() { Id = Guid.NewGuid(), Title = "Something Something Test", DisplayStart = DateTime.UtcNow.AddDays(-1), DisplayEnd = DateTime.UtcNow.AddDays(1)},
             };
         }
 

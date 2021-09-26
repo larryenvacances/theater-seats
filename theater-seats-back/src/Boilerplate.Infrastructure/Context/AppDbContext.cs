@@ -11,8 +11,6 @@ namespace Boilerplate.Infrastructure.Context
         {
         }
 
-        public DbSet<Hero> Heroes { get; set; }
-
         public DbSet<TimeSlotEntity> TimeSlots { get; set; }
 
         public DbSet<MovieEntity> Movies { get; set; }

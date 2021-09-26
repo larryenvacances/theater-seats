@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Boilerplate.Application.DTOs.Hero;
 using Boilerplate.Application.DTOs.Theater;
 using Boilerplate.Application.Interfaces.Theater;
 using Microsoft.AspNetCore.Cors;
@@ -53,8 +52,8 @@ namespace Boilerplate.Api.Controllers
         [HttpGet]
         [Route("{id:guid}")]
         [ProducesResponseType(404)]
-        [ProducesResponseType(typeof(GetHeroDto), 200)]
-        public async Task<ActionResult<GetHeroDto>> GetById(Guid id)
+        [ProducesResponseType(typeof(TimeSlotGetDto), 200)]
+        public async Task<ActionResult<TimeSlotGetDto>> GetById(Guid id)
         {
             var timeSlot = await _timeSlotsAppService.GetById(id);
             if (timeSlot == null) return NotFound();

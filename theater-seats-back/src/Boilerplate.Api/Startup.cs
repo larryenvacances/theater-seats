@@ -28,10 +28,6 @@ namespace Boilerplate.Api
         {
             //Extension method for less clutter in startup
             services.AddApplicationDbContext(Configuration, Environment);
-
-            //DI Services and Repos
-            services.AddScoped<IHeroRepository, HeroRepository>();
-            services.AddScoped<IHeroAppService, HeroAppService>();
             
             services.AddTheaterServices();
 
