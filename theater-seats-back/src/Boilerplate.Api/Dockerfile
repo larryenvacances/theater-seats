@@ -9,7 +9,7 @@ RUN apt-get -q update && apt-get -qy install netcat
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
-COPY ["src/Boilerplate.Api/Boilerplate.Api.csproj", "src/Boilerplate.Api/"]
+COPY ["src/Boilerplate.Api/Boilerplate.Api.csproj", "src/Boilerplate.Api/"] 
 COPY ["src/Boilerplate.Application/Boilerplate.Application.csproj", "src/Boilerplate.Application/"]
 COPY ["src/Boilerplate.Domain/Boilerplate.Domain.csproj", "src/Boilerplate.Domain/"]
 COPY ["src/Boilerplate.Domain.Core/Boilerplate.Domain.Core.csproj", "src/Boilerplate.Domain.Core/"]

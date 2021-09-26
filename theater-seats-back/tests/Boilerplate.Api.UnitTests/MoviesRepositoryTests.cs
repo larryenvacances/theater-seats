@@ -30,7 +30,7 @@ namespace Boilerplate.Api.UnitTests
                 await context.SaveChangesAsync();
             }
 
-            MovieEntity movie = null;
+            MovieEntity movie;
 
             // Act
             await using (var context = CreateDbContext("GetMovies"))
@@ -55,17 +55,17 @@ namespace Boilerplate.Api.UnitTests
                 await context.SaveChangesAsync();
             }
 
-            MovieEntity hero;
+            MovieEntity movie;
 
             // Act
             await using (var context = CreateDbContext("GetMovies_Null"))
             {
                 var repository = new MoviesRepository(context);
-                hero = await repository.GetById(Guid.NewGuid());
+                movie = await repository.GetById(Guid.NewGuid());
             }
 
             // Assert
-            hero.Should().BeNull();
+            movie.Should().BeNull();
         }
     }
 }
