@@ -35,6 +35,7 @@ namespace Boilerplate.Application.Services.Theater
                 .Where(x => x.DisplayStart <= dateTime && dateTime <= x.DisplayEnd)
                 .Include(x => x.TimeSlots.OrderBy(y => y.DisplayHour))
                 .ThenInclude(x => x.Theater)
+                .ThenInclude(x => x.Reservations)
                 .ToListAsync();
 
             return _mapper.Map<IEnumerable<MovieGetDto>>(movies);

@@ -5,24 +5,35 @@ import useAppContext from '../../hooks/useAppContext';
 import './Theater.css';
 
 export default function Theater() {
-  const { selectedTheater } = useAppContext();
+  const { selectedTheater, userName } = useAppContext();
   const [floor, setFloor] = useState(
     Array(selectedTheater.rows)
       .fill()
-      .map((row) => new Array(selectedTheater.columns).fill(false))
+      .map((row) =>
+        new Array(selectedTheater.columns).fill({
+          occupied: false,
+          name: '',
+        })
+      )
   );
 
-  let handleSeatClick = (rowIndex, colIndex) => {
-    floor[rowIndex][colIndex] = true;
+  const handleSeatClick = (rowIndex, colIndex) => {
+    floor[rowIndex][colIndex] = {
+      occupied: true,
+      name: userName,
+    };
     setFloor([...floor]);
   };
 
   useEffect(() => {
-    console.log(selectedTheater);
-    // axios.get('https://localhost:5001/api/Theaters', { params }).then((res) => {
-    //   setMovies(res.data);
-    //   console.log(res.data);
-    // });
+    selectedTheater.reservations.map(
+      (reservation) =>
+        (floor[reservation.row][reservation.column] = {
+          occupied: true,
+          name: reservation.name,
+        })
+    );
+    setFloor([...floor]);
   }, []);
 
   return (
@@ -36,9 +47,12 @@ export default function Theater() {
                   return (
                     <td key={colIndex}>
                       <div
+                        title={floor[rowIndex][colIndex].name}
                         onClick={() => handleSeatClick(rowIndex, colIndex)}
                         className={`Seat ${
-                          floor[rowIndex][colIndex] === true ? 'Taken' : 'Empty'
+                          floor[rowIndex][colIndex].occupied === true
+                            ? 'Taken'
+                            : 'Empty'
                         }`}
                       ></div>
                     </td>

@@ -20,10 +20,10 @@ namespace Boilerplate.Api.Controllers
 
 
         /// <summary>
-        /// Get one movie by id from the database
+        /// Get one theater by id from the database
         /// </summary>
-        /// <param name="theaterId">The movie's id</param>
-        /// <returns></returns>
+        /// <param name="theaterId">The theater's id</param>
+        /// <returns>a theater</returns>
         [HttpGet]
         [Route("{theaterId:guid}")]
         [ProducesResponseType(404)]

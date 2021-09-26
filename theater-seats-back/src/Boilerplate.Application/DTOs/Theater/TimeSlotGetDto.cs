@@ -1,5 +1,4 @@
 ﻿using System;
-using Boilerplate.Domain.Entities.Theater;
 
 namespace Boilerplate.Application.DTOs.Theater
 {
