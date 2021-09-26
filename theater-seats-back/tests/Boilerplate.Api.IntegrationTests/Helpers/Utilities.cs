@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Boilerplate.Domain.Entities;
-using Boilerplate.Domain.Entities.Enums;
 using Boilerplate.Domain.Entities.Theater;
 using Boilerplate.Infrastructure.Context;
 using Microsoft.AspNetCore.Hosting;
