@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Boilerplate.Infrastructure.Migrations
 {
-    [DbContext(typeof(HeroDbContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20210926150326_AddDisplayStartEnd")]
     partial class AddDisplayStartEnd
     {

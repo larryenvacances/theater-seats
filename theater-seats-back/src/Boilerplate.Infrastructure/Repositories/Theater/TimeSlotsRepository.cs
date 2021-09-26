@@ -6,7 +6,7 @@ namespace Boilerplate.Infrastructure.Repositories.Theater
 {
     public class TimeSlotsRepository : Repository<TimeSlotEntity>, ITimeSlotsRepository
     {
-        public TimeSlotsRepository(HeroDbContext dbContext) : base(dbContext)
+        public TimeSlotsRepository(AppDbContext dbContext) : base(dbContext)
         {
         }
     }

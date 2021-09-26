@@ -19,6 +19,9 @@ namespace Boilerplate.Api.Extensions
             
             services.AddScoped<IMoviesRepository, MoviesRepository>();
             services.AddScoped<IMoviesAppService, MoviesAppService>();
+
+            services.AddScoped<IReservationsRepository, ReservationsRepository>();
+            services.AddScoped<IReservationsAppService, ReservationsAppService>();
         }
     }
 }

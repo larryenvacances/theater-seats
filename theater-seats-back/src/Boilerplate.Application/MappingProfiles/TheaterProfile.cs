@@ -11,13 +11,14 @@ namespace Boilerplate.Application.MappingProfiles
             // Theater mappings
             CreateMap<TimeSlotEntity, TimeSlotGetDto>().ReverseMap();
             CreateMap<TimeSlotInsertDto, TimeSlotEntity>().ReverseMap();
-            
+
             CreateMap<MovieEntity, MovieGetDto>().ReverseMap();
             CreateMap<MovieInsertDto, MovieEntity>();
-            
+
             CreateMap<TheaterEntity, TheaterGetDto>().ReverseMap();
-            
+
             CreateMap<ReservationEntity, ReservationGetDto>().ReverseMap();
+            CreateMap<ReservationInsertDto, ReservationEntity>();
         }
     }
 }

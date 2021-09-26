@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Boilerplate.Infrastructure.Context
 {
-    public class HeroDbContext : DbContext
+    public class AppDbContext : DbContext
     {
-        public HeroDbContext(DbContextOptions<HeroDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
 

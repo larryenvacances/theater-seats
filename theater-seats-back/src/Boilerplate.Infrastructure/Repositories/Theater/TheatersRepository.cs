@@ -7,7 +7,7 @@ namespace Boilerplate.Infrastructure.Repositories.Theater
 {
     public class TheatersRepository : Repository<TheaterEntity>, ITheatersRepository
     {
-        public TheatersRepository(HeroDbContext dbContext) : base(dbContext)
+        public TheatersRepository(AppDbContext dbContext) : base(dbContext)
         {
         }
     }

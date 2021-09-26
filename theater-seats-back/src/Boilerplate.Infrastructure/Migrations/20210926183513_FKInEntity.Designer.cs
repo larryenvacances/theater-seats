@@ -4,14 +4,16 @@ using Boilerplate.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Boilerplate.Infrastructure.Migrations
 {
-    [DbContext(typeof(HeroDbContext))]
-    partial class HeroDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(AppDbContext))]
+    [Migration("20210926183513_FKInEntity")]
+    partial class FKInEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,10 +86,10 @@ namespace Boilerplate.Infrastructure.Migrations
                     b.Property<int>("Row")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("TheaterEntityId")
+                    b.Property<Guid>("TheaterEntityId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("TimeSlotId")
+                    b.Property<Guid>("TimeSlotId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -144,11 +146,15 @@ namespace Boilerplate.Infrastructure.Migrations
                 {
                     b.HasOne("Boilerplate.Domain.Entities.Theater.TheaterEntity", null)
                         .WithMany("Reservations")
-                        .HasForeignKey("TheaterEntityId");
+                        .HasForeignKey("TheaterEntityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Boilerplate.Domain.Entities.Theater.TimeSlotEntity", "TimeSlot")
                         .WithMany()
-                        .HasForeignKey("TimeSlotId");
+                        .HasForeignKey("TimeSlotId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("TimeSlot");
                 });

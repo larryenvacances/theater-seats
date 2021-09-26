@@ -12,9 +12,9 @@ namespace Boilerplate.Api.Extensions
             IWebHostEnvironment environment)
         {
             if (environment?.EnvironmentName == "Testing")
-                services.AddDbContextPool<HeroDbContext>(o => { o.UseSqlite("Data Source=test.db"); });
+                services.AddDbContextPool<AppDbContext>(o => { o.UseSqlite("Data Source=test.db"); });
             else
-                services.AddDbContextPool<HeroDbContext>(o =>
+                services.AddDbContextPool<AppDbContext>(o =>
                 {
                     o.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
                     //o.UseInMemoryDatabase(databaseName: "heroesdb");

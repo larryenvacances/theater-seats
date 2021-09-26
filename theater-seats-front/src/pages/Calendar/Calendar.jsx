@@ -19,9 +19,7 @@ export default function Calendar() {
         renderInput={(params) => <TextField {...params} />}
       />
       <div>
-        <Link to="/MoviesList" className="btn btn-primary">
-          Submit
-        </Link>
+        <Link to="/MoviesList">Submit</Link>
       </div>
     </div>
   );

@@ -18,7 +18,6 @@ namespace Boilerplate.Api.Controllers
             _theatersAppService = theatersAppService;
         }
 
-
         /// <summary>
         /// Get one theater by id from the database
         /// </summary>

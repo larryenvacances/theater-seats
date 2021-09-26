@@ -6,7 +6,7 @@ namespace Boilerplate.Infrastructure.Repositories
 {
     public class HeroRepository : Repository<Hero>, IHeroRepository
     {
-        public HeroRepository(HeroDbContext dbContext) : base(dbContext) { }
+        public HeroRepository(AppDbContext dbContext) : base(dbContext) { }
     }
 }
 

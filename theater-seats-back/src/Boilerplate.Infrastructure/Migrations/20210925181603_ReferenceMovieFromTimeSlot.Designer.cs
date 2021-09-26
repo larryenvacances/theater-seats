@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Boilerplate.Infrastructure.Migrations
 {
-    [DbContext(typeof(HeroDbContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20210925181603_ReferenceMovieFromTimeSlot")]
     partial class ReferenceMovieFromTimeSlot
     {

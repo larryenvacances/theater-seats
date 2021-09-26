@@ -1,12 +1,9 @@
 ﻿using System;
-using Boilerplate.Domain.Core.Entities;
 
-namespace Boilerplate.Domain.Entities.Theater
+namespace Boilerplate.Application.DTOs.Theater
 {
-    public class ReservationEntity : Entity
+    public class ReservationInsertDto
     {
-        public TimeSlotEntity TimeSlot { get; set; }
-        
         public Guid TimeSlotId { get; set; }
         
         public Guid TheaterEntityId { get; set; }

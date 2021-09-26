@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Boilerplate.Application.DTOs.Hero;
 using Boilerplate.Application.DTOs.Theater;
 using Boilerplate.Application.Interfaces.Theater;
 using Microsoft.AspNetCore.Cors;
