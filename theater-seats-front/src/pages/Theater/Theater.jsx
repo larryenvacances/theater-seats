@@ -43,15 +43,12 @@ export default function Theater() {
       });
     });
 
-    console.log(param);
-
     axios.put('https://localhost:5001/api/Reservations', param).then((res) => {
       alert('Saved successfully.');
     });
   };
 
   useEffect(() => {
-    console.log(selectedTheater);
     selectedTheater.reservations.map(
       (reservation) =>
         (floor[reservation.row][reservation.column] = {
@@ -63,7 +60,8 @@ export default function Theater() {
   }, []);
 
   return (
-    <div className="Floor">
+    <div>
+      <h1>{userName}</h1>
       <Button variant="contained" onClick={() => submit()}>
         Submit
       </Button>

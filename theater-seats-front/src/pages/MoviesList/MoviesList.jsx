@@ -32,7 +32,6 @@ export default function MoviesList() {
 
     axios.get('https://localhost:5001/api/Movies', { params }).then((res) => {
       setMovies(res.data);
-      console.log(res.data);
     });
   }, []);
 
@@ -56,7 +55,9 @@ export default function MoviesList() {
                   }
                   key={timeSlotIndex}
                 >
-                  <ListItemText primary={timeSlot.displayHour} />
+                  <ListItemText
+                    primary={'Representation: ' + timeSlot.displayHour + ':00'}
+                  />
                 </ListItemButton>
               ))}
             </List>
