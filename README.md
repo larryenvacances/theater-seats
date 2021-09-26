@@ -22,6 +22,7 @@ The project is seperated in two different folders, one for the frontend in react
 # Data seeding
 
 - You will notice that some data is seeded on the bootstrap of the application. The movie "Silence of the Lambdas" is visible from DateTime.Now - 10 days until DateTime.Now + 10 days, to make testing easier.
+- The swagger ui will allow you to insert some data to your liking. It is my "lazy" implementation of the admin page that lets users create movies, for example.
 
 # Further reading
 

@@ -19,18 +19,13 @@ namespace Boilerplate.Api.Extensions
                     {
                         Title = "Boilerplate.Api",
                         Version = "v1",
-                        Description = "Boilerplate de API",
-                        Contact = new OpenApiContact
-                        {
-                            Name = "Yan Pitangui",
-                            Url = new Uri("https://github.com/yanpitangui")
-                        }
+                        Description = "Boilerplate"
                     });
                 c.DescribeAllParametersInCamelCase();
                 c.OrderActionsBy(x => x.RelativePath);
 
-                var xmlfile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlfile);
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
             return services;
