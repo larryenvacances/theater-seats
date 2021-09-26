@@ -7,6 +7,10 @@ The project is seperated in two different folders, one for the frontend in react
 - The frontend project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 - The backend project was forked from [dotnet-api-boilerplate](https://github.com/yanpitangui/dotnet-api-boilerplate).
 
+# Note
+
+- The tests that were added to the solution are just there to demonstrate the kind of tests I would write for a solution of this type. I would achieve a better coverage if it was production code.
+
 # Docker
 
 - The backend I forked from supports docker-compose, but I was not able to test it on my personnal machine because it doesn't support virtualization.
