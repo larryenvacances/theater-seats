@@ -17,7 +17,7 @@ namespace Boilerplate.Api.Extensions
                 services.AddDbContextPool<AppDbContext>(o =>
                 {
                     o.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-                    //o.UseInMemoryDatabase(databaseName: "theaterdb");
+                    // o.UseInMemoryDatabase(databaseName: "theaterdb");
                 });
         }
     }

@@ -62,6 +62,7 @@ export default function Theater() {
   return (
     <div>
       <h1>{userName}</h1>
+      <h1>Click on the seats to reserve them</h1>
       <Button variant="contained" onClick={() => submit()}>
         Submit
       </Button>

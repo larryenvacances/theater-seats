@@ -9,7 +9,7 @@ The project is seperated in two different folders, one for the frontend in react
 
 # Note
 
-- The tests that were added to the solution are just there to demonstrate the kind of tests I would write for a solution of this type. I would achieve a better coverage if it was production code.
+- The tests that were added to the solution are just there to demonstrate the kind of tests I would write for a solution of this type. I would achieve a better coverage if it was production
 
 # Docker
 
@@ -19,7 +19,7 @@ The project is seperated in two different folders, one for the frontend in react
 # Prerequisites
 
 - If docker-compose does not work, you will need, in order to run the backed in standalone:
-  - [SQL Express](https://go.microsoft.com/fwlink/?linkid=866658)
+  - [SQL Express](https://go.microsoft.com/fwlink/?linkid=866658), but only if you want to run the application on an actual database. If you want, you can also run the db in memory by commenting line 19 of DatabaseExtension and uncommenting line 20.
   - [net core 5 sdk](https://dotnet.microsoft.com/download/dotnet/5.0)
   - [Node v14](https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi)
 
